@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Magic Garden Decor Customiser</title>
+  <meta name="description" content="Plan and share Magic Garden decor layouts with accurate in-game rendering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Space+Grotesk:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Full-screen canvas -->
+  <div class="canvas-wrap" id="canvasWrap">
+    <div class="loading" id="loadingState">Loading assets...</div>
+  </div>
+
+  <!-- Minimal overlay UI - top right -->
+  <div class="overlay-controls">
+    <button class="btn" id="resetView">Reset View</button>
+    <button class="btn" id="exportBtn">Export</button>
+    <button class="btn" id="importBtn">Import</button>
+    <div style="width: 20px;"></div>
+    <button class="btn" id="decorBtn">Decor</button>
+    <button class="btn" id="cropsBtn">Crops</button>
+    <button class="btn" id="otherBtn">Other</button>
+  </div>
+
+  <!-- Decor picker modal (hidden by default) -->
+  <div class="decor-modal" id="decorModal" style="display: none;">
+    <div class="decor-modal-content">
+      <div class="decor-header">
+        <h3 id="modalTitleLabel">Select Sprite</h3>
+        <button class="btn-close" id="closeDecorModal">×</button>
+      </div>
+      <input id="searchDecor" type="search" placeholder="Search decor...">
+      <div class="decor-grid" id="decorList"></div>
+      <div class="decor-footer">
+        <div class="selection-preview" id="selectionPreview"></div>
+        <div class="selection-info">
+          <span id="selectedName">None selected</span>
+          <span id="rotationLabel">Rotation: 0°</span>
+        </div>
+      </div>
+      <div class="mutation-panel" id="mutationPanel" style="display: none;">
+        <h4>Mutations</h4>
+        <div class="mutation-list" id="mutationList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status overlay - bottom left -->
+  <div class="status-overlay">
+    <span>Placed: <strong id="placedCount">0</strong></span>
+    <span>Slot: <strong id="slotLabel">00</strong></span>
+  </div>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-card">
+      <header>
+        <h3 id="modalTitle">Export</h3>
+        <button class="btn ghost" id="modalClose">Close</button>
+      </header>
+      <textarea id="modalText" spellcheck="false"></textarea>
+      <div class="modal-actions">
+        <button class="btn" id="modalPrimary">Copy</button>
+        <button class="btn ghost" id="modalSecondary">Download</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="controlsTooltip" class="controls-tooltip">
+    <button class="close-tooltip" id="closeTooltip">×</button>
+    <p><strong>Controls</strong></p>
+    <ul>
+      <li><strong>Left Click:</strong> Place / Select</li>
+      <li><strong>Right Click:</strong> Remove</li>
+      <li><strong>Hold + Drag:</strong> Pan Camera</li>
+      <li><strong>Hover + R:</strong> Rotate Selected</li>
+      <li><strong>Double Tap:</strong> Rotate Item (90°)</li>
+      <li><strong>Space / Esc:</strong> Unselect</li>
+      <li><strong>D:</strong> Decor Menu</li>
+      <li><strong>S:</strong> Crops Menu</li>
+      <li><strong>O:</strong> Other Menu</li>
+      <li><strong>Scroll / Pinch:</strong> Zoom</li>
+    </ul>
+  </div>
+
+  <noscript>
+    <div class="noscript">This tool requires JavaScript to run.</div>
+  </noscript>
+
+  <script src="https://cdn.jsdelivr.net/npm/pixi.js@8.6.2/dist/pixi.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@pixi/tilemap@5.0.0/dist/tilemap.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
