@@ -26,9 +26,7 @@
     <button class="btn" id="exportBtn">Export</button>
     <button class="btn" id="importBtn">Import</button>
     <div style="width: 20px;"></div>
-    <button class="btn" id="decorBtn">Decor</button>
-    <button class="btn" id="cropsBtn">Crops</button>
-    <button class="btn" id="otherBtn">Other</button>
+    <button class="btn primary" id="decorBtn">Select Decor</button>
   </div>
 
   <!-- Decor picker modal (hidden by default) -->
@@ -77,17 +75,26 @@
   <div id="controlsTooltip" class="controls-tooltip">
     <button class="close-tooltip" id="closeTooltip">×</button>
     <p><strong>Controls</strong></p>
-    <ul>
+
+    <!-- Desktop Controls -->
+    <ul class="desktop-only">
       <li><strong>Left Click:</strong> Place / Select</li>
       <li><strong>Right Click:</strong> Remove</li>
       <li><strong>Hold + Drag:</strong> Pan Camera</li>
-      <li><strong>Hover + R:</strong> Rotate Selected</li>
-      <li><strong>Double Tap:</strong> Rotate Item (90°)</li>
+      <li><strong>Spacebar + Drag:</strong> Paint Multiple Tiles</li>
+      <li><strong>Hover + R:</strong> Rotate Item</li>
       <li><strong>Space / Esc:</strong> Unselect</li>
       <li><strong>D:</strong> Decor Menu</li>
-      <li><strong>S:</strong> Crops Menu</li>
-      <li><strong>O:</strong> Other Menu</li>
-      <li><strong>Scroll / Pinch:</strong> Zoom</li>
+      <li><strong>Scroll:</strong> Zoom</li>
+    </ul>
+
+    <!-- Mobile Controls -->
+    <ul class="mobile-only">
+      <li><strong>Tap:</strong> Place / Select</li>
+      <li><strong>Long Press:</strong> Remove Item</li>
+      <li><strong>Hold + Drag:</strong> Pan Camera</li>
+      <li><strong>Double Tap:</strong> Rotate Item (90°)</li>
+      <li><strong>Pinch:</strong> Zoom</li>
     </ul>
   </div>
 

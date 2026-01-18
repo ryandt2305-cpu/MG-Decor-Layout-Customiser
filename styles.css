@@ -434,9 +434,15 @@ body {
 }
 
 .controls-tooltip li {
-  margin-bottom: 6px;
+  margin-bottom: 0;
+  padding: 6px 0;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.controls-tooltip li:last-child {
+  border-bottom: none;
 }
 
 .close-tooltip {
@@ -454,4 +460,13 @@ body {
 
 .close-tooltip:hover {
   color: var(--ink);
+}
+
+/* Device-specific control display */
+.desktop .mobile-only {
+  display: none !important;
+}
+
+.mobile .desktop-only {
+  display: none !important;
 }

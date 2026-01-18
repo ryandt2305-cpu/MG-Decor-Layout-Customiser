@@ -2,514 +2,342 @@
   {
     "decorId": "SmallRock",
     "name": "Small Garden Rock",
-    "tileName": "SmallRock",
-    "rotationVariants": null
+    "sprite": "SmallRock",
+    "baseTileScale": 1,
+    "nudgeY": 0
   },
   {
     "decorId": "MediumRock",
     "name": "Medium Garden Rock",
-    "tileName": "MediumRock",
-    "rotationVariants": null
+    "sprite": "MediumRock",
+    "baseTileScale": 1,
+    "nudgeY": 0
   },
   {
     "decorId": "LargeRock",
     "name": "Large Garden Rock",
-    "tileName": "LargeRock",
-    "rotationVariants": null
+    "sprite": "LargeRock",
+    "baseTileScale": 1,
+    "nudgeY": 0
   },
   {
     "decorId": "HayBale",
     "name": "Hay Bale",
-    "tileName": "HayBale",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "HayBaleSideways",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "HayBale",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "HayBaleSideways",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "HayBale",
+    "baseTileScale": 1.8,
+    "nudgeY": -0.42,
+    "rotationVariants": {
+      "90": { "sprite": "HayBaleSideways", "flipH": true },
+      "180": { "sprite": "HayBale", "flipH": true },
+      "270": { "sprite": "HayBaleSideways" }
+    }
   },
   {
     "decorId": "StringLights",
     "name": "String Lights",
-    "tileName": "StringLights",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "StringLightsSideways",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "StringLights",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "StringLightsSideways",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "StringLights",
+    "baseTileScale": 1,
+    "nudgeY": 0,
+    "rotationVariants": {
+      "90": { "sprite": "StringLightsSideways", "flipH": true },
+      "180": { "sprite": "StringLights", "flipH": true },
+      "270": { "sprite": "StringLightsSideways" }
+    }
   },
   {
     "decorId": "ColoredStringLights",
     "name": "Colored String Lights",
-    "tileName": "ColoredStringLights",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "ColoredStringLightsSideways",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "ColoredStringLights",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "ColoredStringLightsSideways",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "ColoredStringLights",
+    "baseTileScale": 1,
+    "nudgeY": 0,
+    "rotationVariants": {
+      "90": { "sprite": "ColoredStringLightsSideways", "flipH": true },
+      "180": { "sprite": "ColoredStringLights", "flipH": true },
+      "270": { "sprite": "ColoredStringLightsSideways" }
+    }
   },
   {
     "decorId": "SmallGravestone",
     "name": "Small Gravestone",
-    "tileName": "SmallGravestone",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "SmallGravestoneSideways",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "SmallGravestone",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "SmallGravestoneSideways",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "SmallGravestone",
+    "baseTileScale": 1,
+    "nudgeY": -0.38,
+    "rotationVariants": {
+      "90": { "sprite": "SmallGravestoneSideways", "flipH": true, "baseTileScale": 1.12, "nudgeY": -0.32 },
+      "180": { "sprite": "SmallGravestone", "flipH": true },
+      "270": { "sprite": "SmallGravestoneSideways", "baseTileScale": 1.12, "nudgeY": -0.32 }
+    }
   },
   {
     "decorId": "WoodCaribou",
     "name": "Wood Caribou",
-    "tileName": "WoodCaribou",
-    "rotationVariants": null
+    "sprite": "WoodCaribou",
+    "baseTileScale": 1,
+    "nudgeY": 0
   },
   {
     "decorId": "WoodBench",
     "name": "Wood Bench",
-    "tileName": "WoodBench",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "WoodBenchSideways",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "WoodBenchBackwards",
-        "flipH": null,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "WoodBenchSideways",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "WoodBench",
+    "baseTileScale": 1,
+    "nudgeY": -0.3,
+    "rotationVariants": {
+      "90": { "sprite": "WoodBenchSideways", "flipH": true, "baseTileScale": 1.46, "nudgeY": -0.3 },
+      "180": { "sprite": "WoodBenchBackwards" },
+      "270": { "sprite": "WoodBenchSideways", "baseTileScale": 1.46, "nudgeY": -0.3 }
+    }
   },
   {
     "decorId": "WoodArch",
     "name": "Wood Arch",
-    "tileName": "WoodArch",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "WoodArchSide",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "WoodArch",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "WoodArchSide",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "WoodArch",
+    "baseTileScale": 1.53,
+    "nudgeY": -0.5,
+    "rotationVariants": {
+      "90": { "sprite": "WoodArchSide", "flipH": true, "baseTileScale": 2.1, "nudgeY": -0.48 },
+      "180": { "sprite": "WoodArch", "flipH": true },
+      "270": { "sprite": "WoodArchSide", "baseTileScale": 2.1, "nudgeY": -0.48 }
+    }
   },
   {
     "decorId": "WoodBridge",
     "name": "Wood Bridge",
-    "tileName": "WoodBridge",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "WoodBridgeSideways",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "WoodBridge",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "WoodBridgeSideways",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "WoodBridge",
+    "baseTileScale": 1.22,
+    "nudgeY": -0.35,
+    "rotationVariants": {
+      "90": { "sprite": "WoodBridgeSideways", "flipH": true, "baseTileScale": 1.7, "nudgeY": -0.28 },
+      "180": { "sprite": "WoodBridge", "flipH": true },
+      "270": { "sprite": "WoodBridgeSideways", "baseTileScale": 1.7, "nudgeY": -0.28 }
+    }
   },
   {
     "decorId": "WoodLampPost",
     "name": "Wood Lamp Post",
-    "tileName": "WoodLampPost",
-    "rotationVariants": null
+    "sprite": "WoodLampPost",
+    "baseTileScale": 1.5,
+    "nudgeY": -0.6
   },
   {
     "decorId": "WoodOwl",
     "name": "Wood Owl",
-    "tileName": "WoodOwl",
-    "rotationVariants": null
+    "sprite": "WoodOwl",
+    "baseTileScale": 1.3,
+    "nudgeY": -0.4
   },
   {
     "decorId": "WoodBirdhouse",
     "name": "Wood Birdhouse",
-    "tileName": "Birdhouse",
-    "rotationVariants": null
+    "sprite": "Birdhouse",
+    "baseTileScale": 1.5,
+    "nudgeY": -0.6
   },
   {
     "decorId": "WoodWindmill",
     "name": "Wood Windmill",
-    "tileName": "WoodWindmill",
-    "rotationVariants": null
+    "sprite": "WoodWindmill",
+    "baseTileScale": 1.5,
+    "nudgeY": -0.47
   },
   {
     "decorId": "MediumGravestone",
     "name": "Medium Gravestone",
-    "tileName": "MediumGravestone",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "MediumGravestoneSideways",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "MediumGravestone",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "MediumGravestoneSideways",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "MediumGravestone",
+    "baseTileScale": 1.2,
+    "nudgeY": -0.45,
+    "rotationVariants": {
+      "90": { "sprite": "MediumGravestoneSideways", "flipH": true, "baseTileScale": 1.32, "nudgeY": -0.33 },
+      "180": { "sprite": "MediumGravestone", "flipH": true },
+      "270": { "sprite": "MediumGravestoneSideways", "baseTileScale": 1.32, "nudgeY": -0.33 }
+    }
   },
   {
     "decorId": "StoneCaribou",
     "name": "Stone Caribou",
-    "tileName": "StoneCaribou",
-    "rotationVariants": null
+    "sprite": "StoneCaribou",
+    "baseTileScale": 1.2,
+    "nudgeY": 0
   },
   {
     "decorId": "StoneBench",
     "name": "Stone Bench",
-    "tileName": "StoneBench",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "StoneBenchSideways",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "StoneBench",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "StoneBenchSideways",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "StoneBench",
+    "baseTileScale": 1,
+    "nudgeY": -0.3,
+    "rotationVariants": {
+      "90": { "sprite": "StoneBenchSideways", "flipH": true, "baseTileScale": 1.47, "nudgeY": -0.3 },
+      "180": { "sprite": "StoneBench", "flipH": true },
+      "270": { "sprite": "StoneBenchSideways", "baseTileScale": 1.47, "nudgeY": -0.3 }
+    }
   },
   {
     "decorId": "StoneArch",
     "name": "Stone Arch",
-    "tileName": "StoneArch",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "StoneArchSideways",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "StoneArch",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "StoneArchSideways",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "StoneArch",
+    "baseTileScale": 1.53,
+    "nudgeY": -0.5,
+    "rotationVariants": {
+      "90": { "sprite": "StoneArchSideways", "flipH": true, "baseTileScale": 2.1, "nudgeY": -0.44 },
+      "180": { "sprite": "StoneArch", "flipH": true },
+      "270": { "sprite": "StoneArchSideways", "baseTileScale": 2.1, "nudgeY": -0.44 }
+    }
   },
   {
     "decorId": "StoneBridge",
     "name": "Stone Bridge",
-    "tileName": "StoneBridge",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "StoneBridgeSideways",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "StoneBridge",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "StoneBridgeSideways",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "StoneBridge",
+    "baseTileScale": 1.22,
+    "nudgeY": -0.35,
+    "rotationVariants": {
+      "90": { "sprite": "StoneBridgeSideways", "flipH": true, "baseTileScale": 1.7, "nudgeY": -0.28 },
+      "180": { "sprite": "StoneBridge", "flipH": true },
+      "270": { "sprite": "StoneBridgeSideways", "baseTileScale": 1.7, "nudgeY": -0.28 }
+    }
   },
   {
     "decorId": "StoneLampPost",
     "name": "Stone Lamp Post",
-    "tileName": "StoneLampPost",
-    "rotationVariants": null
+    "sprite": "StoneLampPost",
+    "baseTileScale": 1.5,
+    "nudgeY": -0.6
   },
   {
     "decorId": "StoneGnome",
     "name": "Stone Gnome",
-    "tileName": "StoneGnome",
-    "rotationVariants": null
+    "sprite": "StoneGnome",
+    "baseTileScale": 1.3,
+    "nudgeY": -0.4
   },
   {
     "decorId": "StoneBirdbath",
     "name": "Stone Birdbath",
-    "tileName": "StoneBirdBath",
-    "rotationVariants": null
+    "sprite": "StoneBirdBath",
+    "baseTileScale": 1.2,
+    "nudgeY": -0.46
   },
   {
     "decorId": "LargeGravestone",
     "name": "Large Gravestone",
-    "tileName": "LargeGravestone",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "LargeGravestoneSideways",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "LargeGravestone",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "LargeGravestoneSideways",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "LargeGravestone",
+    "baseTileScale": 1.4,
+    "nudgeY": -0.51,
+    "rotationVariants": {
+      "90": { "sprite": "LargeGravestoneSideways", "flipH": true, "nudgeY": -0.39, "baseTileScale": 1.5 },
+      "180": { "sprite": "LargeGravestone", "flipH": true },
+      "270": { "sprite": "LargeGravestoneSideways", "nudgeY": -0.39, "baseTileScale": 1.5 }
+    }
   },
   {
     "decorId": "MarbleCaribou",
     "name": "Marble Caribou",
-    "tileName": "MarbleCaribou",
-    "rotationVariants": null
+    "sprite": "MarbleCaribou",
+    "baseTileScale": 1.4,
+    "nudgeY": 0
   },
   {
     "decorId": "MarbleBench",
     "name": "Marble Bench",
-    "tileName": "MarbleBench",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "MarbleBenchSideways",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "MarbleBenchBackwards",
-        "flipH": null,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "MarbleBenchSideways",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "MarbleBench",
+    "baseTileScale": 1,
+    "nudgeY": -0.3,
+    "rotationVariants": {
+      "90": { "sprite": "MarbleBenchSideways", "flipH": true, "baseTileScale": 1.55, "nudgeY": -0.35 },
+      "180": { "sprite": "MarbleBenchBackwards" },
+      "270": { "sprite": "MarbleBenchSideways", "baseTileScale": 1.55, "nudgeY": -0.35 }
+    }
   },
   {
     "decorId": "MarbleArch",
     "name": "Marble Arch",
-    "tileName": "MarbleArch",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "MarbleArchSideways",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "MarbleArch",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "MarbleArchSideways",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "MarbleArch",
+    "baseTileScale": 1.53,
+    "nudgeY": -0.5,
+    "rotationVariants": {
+      "90": { "sprite": "MarbleArchSideways", "flipH": true, "baseTileScale": 2.38, "nudgeY": -0.57 },
+      "180": { "sprite": "MarbleArch", "flipH": true },
+      "270": { "sprite": "MarbleArchSideways", "baseTileScale": 2.38, "nudgeY": -0.57 }
+    }
   },
   {
     "decorId": "MarbleBridge",
     "name": "Marble Bridge",
-    "tileName": "MarbleBridge",
-    "rotationVariants": [
-      {
-        "rotation": 90,
-        "tileName": "MarbleBridgeSideways",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 180,
-        "tileName": "MarbleBridge",
-        "flipH": true,
-        "flipV": null
-      },
-      {
-        "rotation": 270,
-        "tileName": "MarbleBridgeSideways",
-        "flipH": null,
-        "flipV": null
-      }
-    ]
+    "sprite": "MarbleBridge",
+    "baseTileScale": 1.22,
+    "nudgeY": -0.35,
+    "rotationVariants": {
+      "90": { "sprite": "MarbleBridgeSideways", "flipH": true, "baseTileScale": 1.7, "nudgeY": -0.28 },
+      "180": { "sprite": "MarbleBridge", "flipH": true },
+      "270": { "sprite": "MarbleBridgeSideways", "baseTileScale": 1.7, "nudgeY": -0.28 }
+    }
   },
   {
     "decorId": "MarbleLampPost",
     "name": "Marble Lamp Post",
-    "tileName": "MarbleLampPost",
-    "rotationVariants": null
+    "sprite": "MarbleLampPost",
+    "baseTileScale": 1.5,
+    "nudgeY": -0.6
   },
   {
     "decorId": "MarbleBlobling",
     "name": "Marble Blobling",
-    "tileName": "MarbleBlobling",
-    "rotationVariants": null
+    "sprite": "MarbleBlobling",
+    "baseTileScale": 1.5,
+    "nudgeY": -0.56
   },
   {
     "decorId": "MarbleFountain",
     "name": "Marble Fountain",
-    "tileName": "MarbleFountain",
-    "rotationVariants": null
+    "sprite": "MarbleFountain",
+    "baseTileScale": 1.5,
+    "nudgeY": -0.3
   },
   {
     "decorId": "MiniFairyCottage",
     "name": "Mini Fairy Cottage",
-    "tileName": "MiniFairyCottage",
-    "rotationVariants": null
+    "sprite": "MiniFairyCottage",
+    "baseTileScale": 1.1,
+    "nudgeY": -0.37
   },
   {
     "decorId": "Cauldron",
     "name": "Cauldron",
-    "tileName": "Cauldron",
-    "rotationVariants": null
+    "sprite": "Cauldron",
+    "baseTileScale": 1.5,
+    "nudgeY": -0.25
   },
   {
     "decorId": "StrawScarecrow",
     "name": "Straw Scarecrow",
-    "tileName": "StrawScarecrow",
-    "rotationVariants": null
+    "sprite": "StrawScarecrow",
+    "baseTileScale": 1.8,
+    "nudgeY": -0.65
   },
   {
     "decorId": "MiniFairyForge",
     "name": "Mini Fairy Forge",
-    "tileName": "MiniFairyForge",
-    "rotationVariants": null
+    "sprite": "MiniFairyForge",
+    "baseTileScale": 1,
+    "nudgeY": -0.3
   },
   {
     "decorId": "MiniFairyKeep",
     "name": "Mini Fairy Keep",
-    "tileName": "MiniFairyKeep",
-    "rotationVariants": null
+    "sprite": "MiniFairyKeep",
+    "baseTileScale": 1.05,
+    "nudgeY": -0.33
   },
   {
     "decorId": "MiniWizardTower",
     "name": "Mini Wizard Tower",
-    "tileName": "MiniWizardTower",
-    "rotationVariants": null
+    "sprite": "MiniWizardTower",
+    "baseTileScale": 1.8,
+    "nudgeY": -0.59
   },
   {
     "decorId": "PetHutch",
     "name": "Pet Hutch",
-    "tileName": "PetHutch",
-    "rotationVariants": null
+    "sprite": "PetHutch",
+    "baseTileScale": 1.05,
+    "nudgeY": -0.45
   }
 ]
