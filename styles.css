@@ -35,6 +35,9 @@ body {
   inset: 0;
   background: linear-gradient(160deg, #111916, #0b110e);
   touch-action: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
 }
 
 .loading {

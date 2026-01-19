@@ -62,7 +62,9 @@
       isPanning: false,
       spacebarHeld: false,
       paintMode: false,
-      lastPaintedTile: null
+      lastPaintedTile: null,
+      hasMoved: false,
+      longPressTimer: null
     },
     tileIndex: {
       dirtGlobals: [],
@@ -481,7 +483,7 @@
 
   function updateGhost() {
     if (!state.overlay) return;
-    if (state.pointerState.isPanning) {
+    if (state.pointerState.isPanning || state.pointerState.pointers.size > 1) {
       if (state.ghost) state.ghost.displayObject.visible = false;
       return;
     }
@@ -571,7 +573,26 @@
     }
 
     state.pointerState.isPanning = false;
+    state.pointerState.hasMoved = false;
+
+    // Start long-press timer on mobile
+    if (isMobileDevice()) {
+      if (state.pointerState.longPressTimer) clearTimeout(state.pointerState.longPressTimer);
+      state.pointerState.longPressTimer = setTimeout(() => {
+        const worldPos = screenToWorld(event.global);
+        const { gridX, gridY } = worldToGrid(worldPos.x, worldPos.y);
+        const hit = getTileHit(gridX, gridY);
+        if (hit && !state.pointerState.hasMoved) {
+          removeDecorAt(hit.tileType, hit.localIndex);
+          state.pointerState.hasMoved = true; // Prevent tap on release
+        }
+      }, 600);
+    }
+
     if (state.pointerState.pointers.size === 2) {
+      state.pointerState.hasMoved = true; // Two fingers down = gesture
+      if (state.pointerState.longPressTimer) clearTimeout(state.pointerState.longPressTimer);
+
       const pts = Array.from(state.pointerState.pointers.values());
       const dist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y) || 1;
       state.pointerState.pinching = {
@@ -615,6 +636,16 @@
     pointer.x = event.global.x;
     pointer.y = event.global.y;
 
+    // Track movement to distinguish taps from gestures
+    const moveThreshold = 10;
+    if (Math.abs(dx) > moveThreshold || Math.abs(dy) > moveThreshold) {
+      state.pointerState.hasMoved = true;
+      if (state.pointerState.longPressTimer) {
+        clearTimeout(state.pointerState.longPressTimer);
+        state.pointerState.longPressTimer = null;
+      }
+    }
+
     // Handle Pinching
     if (state.pointerState.pinching && pointers.size >= 2) {
       const pts = Array.from(pointers.values());
@@ -623,12 +654,14 @@
 
       zoomAt(midpoint, state.pointerState.pinching.tileSize * (dist / state.pointerState.pinching.distance));
       state.pointerState.isPanning = false; // Zooming takes priority
+      state.pointerState.hasMoved = true;
       return;
     }
 
     // Handle Panning / Hover
     if (!state.pointerState.isPanning && Math.hypot(event.global.x - state.pointerState.startPos.x, event.global.y - state.pointerState.startPos.y) > 10) {
       state.pointerState.isPanning = true;
+      state.pointerState.hasMoved = true;
     }
 
     if (state.pointerState.isPanning) {
@@ -645,6 +678,11 @@
   }
 
   function handlePointerUp(event) {
+    if (state.pointerState.longPressTimer) {
+      clearTimeout(state.pointerState.longPressTimer);
+      state.pointerState.longPressTimer = null;
+    }
+
     if (!state.pointerState.pointers.has(event.pointerId)) return;
     state.pointerState.pointers.delete(event.pointerId);
     if (state.pointerState.pointers.size < 2) state.pointerState.pinching = null;
@@ -656,19 +694,35 @@
       return;
     }
 
-    if (state.pointerState.isPanning) { state.pointerState.isPanning = false; return; }
+    if (state.pointerState.isPanning) {
+      state.pointerState.isPanning = false;
+      state.pointerState.hasMoved = true;
+      return;
+    }
+
+    // If we moved significantly, don't trigger a tap action
+    if (state.pointerState.hasMoved) return;
+
     const now = Date.now();
     const isDouble = state.lastPointerUp && (now - state.lastPointerUp < 300);
     state.lastPointerUp = now;
+
     const worldPos = screenToWorld(event.global);
     const { gridX, gridY } = worldToGrid(worldPos.x, worldPos.y);
     const hit = getTileHit(gridX, gridY);
+
     if (hit) {
       const key = tileKey(hit.tileType, hit.localIndex);
       const existing = state.placed.get(key);
-      if (isDouble && existing) { setDecorAt(hit.tileType, hit.localIndex, existing.decorId, (existing.rotation + 90) % 360); return; }
-      if (state.selectedDecorId) setDecorAt(hit.tileType, hit.localIndex, state.selectedDecorId, state.selectedRotation);
-      else if (existing) {
+
+      if (isDouble && existing) {
+        setDecorAt(hit.tileType, hit.localIndex, existing.decorId, (existing.rotation + 90) % 360);
+        return;
+      }
+
+      if (state.selectedDecorId) {
+        setDecorAt(hit.tileType, hit.localIndex, state.selectedDecorId, state.selectedRotation);
+      } else if (existing) {
         dom.selectedName.textContent = dataFromName(existing.decorId);
         removeDecorAt(hit.tileType, hit.localIndex);
         updateGhost();
