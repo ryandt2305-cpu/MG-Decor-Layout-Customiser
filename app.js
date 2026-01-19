@@ -574,7 +574,14 @@
     if (state.pointerState.pointers.size === 2) {
       const pts = Array.from(state.pointerState.pointers.values());
       const dist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y) || 1;
-      state.pointerState.pinching = { distance: dist, tileSize: state.tileSize, midpoint: { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 } };
+      state.pointerState.pinching = {
+        distance: dist,
+        tileSize: state.tileSize,
+        midpoint: { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 }
+      };
+
+      // Prevent accidental single-click actions when two fingers are down
+      state.pointerState.isPanning = false;
     }
   }
 
@@ -597,32 +604,44 @@
       return;
     }
 
+    const pointer = pointers.get(event.pointerId);
+    if (!pointer) return;
+
+    // Calculate delta BEFORE updating the pointer map
+    const dx = event.global.x - pointer.x;
+    const dy = event.global.y - pointer.y;
+
+    // Update the pointer map with new coordinates
+    pointer.x = event.global.x;
+    pointer.y = event.global.y;
+
+    // Handle Pinching
     if (state.pointerState.pinching && pointers.size >= 2) {
       const pts = Array.from(pointers.values());
       const dist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y) || 1;
       const midpoint = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 };
+
       zoomAt(midpoint, state.pointerState.pinching.tileSize * (dist / state.pointerState.pinching.distance));
+      state.pointerState.isPanning = false; // Zooming takes priority
       return;
     }
-    const pointer = pointers.get(event.pointerId);
-    if (pointer) {
-      if (!state.pointerState.isPanning && Math.hypot(event.global.x - state.pointerState.startPos.x, event.global.y - state.pointerState.startPos.y) > 5) {
-        state.pointerState.isPanning = true;
-      }
-      if (state.pointerState.isPanning) {
-        const prev = { ...pointer };
-        pointers.set(event.pointerId, { x: event.global.x, y: event.global.y });
-        const zoom = state.camera.scale.x || 1;
-        state.targetCenter.x -= (event.global.x - prev.x) / zoom;
-        state.targetCenter.y -= (event.global.y - prev.y) / zoom;
-        updateCamera();
-        return;
-      }
+
+    // Handle Panning / Hover
+    if (!state.pointerState.isPanning && Math.hypot(event.global.x - state.pointerState.startPos.x, event.global.y - state.pointerState.startPos.y) > 10) {
+      state.pointerState.isPanning = true;
     }
-    const worldPos = screenToWorld(event.global);
-    const { gridX, gridY } = worldToGrid(worldPos.x, worldPos.y);
-    const hit = getTileHit(gridX, gridY);
-    updateHoverOutline(hit ? { ...hit, gridX, gridY, valid: true } : { gridX, gridY, valid: false });
+
+    if (state.pointerState.isPanning) {
+      const zoom = state.camera.scale.x || 1;
+      state.targetCenter.x -= dx / zoom;
+      state.targetCenter.y -= dy / zoom;
+      updateCamera();
+    } else {
+      const worldPos = screenToWorld(event.global);
+      const { gridX, gridY } = worldToGrid(worldPos.x, worldPos.y);
+      const hit = getTileHit(gridX, gridY);
+      updateHoverOutline(hit ? { ...hit, gridX, gridY, valid: true } : { gridX, gridY, valid: false });
+    }
   }
 
   function handlePointerUp(event) {
